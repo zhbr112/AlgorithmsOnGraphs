@@ -1,0 +1,14 @@
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\bin\Debug\net9.0\AlgorithmsOnGraphs.exe
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\bin\Debug\net9.0\AlgorithmsOnGraphs.deps.json
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\bin\Debug\net9.0\AlgorithmsOnGraphs.runtimeconfig.json
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\bin\Debug\net9.0\AlgorithmsOnGraphs.dll
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\bin\Debug\net9.0\AlgorithmsOnGraphs.pdb
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.AssemblyInfoInputs.cache
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.AssemblyInfo.cs
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.csproj.CoreCompileInputs.cache
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.dll
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\refint\AlgorithmsOnGraphs.dll
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.pdb
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\AlgorithmsOnGraphs.genruntimeconfig.cache
+C:\Users\bigra\source\repos\AlgorithmsOnGraphs\AlgorithmsOnGraphs\obj\Debug\net9.0\ref\AlgorithmsOnGraphs.dll
