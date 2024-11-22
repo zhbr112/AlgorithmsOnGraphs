@@ -31,7 +31,7 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
             {
                 while (ant.IsMoving)
                 {
-                    ant.ChooseVertex(Graph, Pheromones, Alpha, Beta);
+                    ant.ChooseVertex(Pheromones, Alpha, Beta);
                 }
 
                 var path = ant.GetPath();

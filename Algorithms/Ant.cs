@@ -11,7 +11,7 @@ public class Ant(Vertex start)
     private Random Random = new Random();
     public bool IsMoving = true;
 
-    public void ChooseVertex(Graph graph, Dictionary<Edge, double> pheromones, double alpha, double beta)
+    public void ChooseVertex(Dictionary<Edge, double> pheromones, double alpha, double beta)
     {
         if (Visited.Count == 0)
         {
