@@ -2,19 +2,25 @@
 
 namespace AlgorithmsOnGraphs.Algorithms;
 
-public class Dijkstra
+public class Dijkstra(Graph graph)
 {
-    public static Dictionary<Vertex, int> Algorithm(Graph graph, Vertex source)
+    private Graph Graph = graph;
+
+    public Dictionary<Vertex, int> Algorithm(string sourceName)
     {
-        var distances = graph.Vertices.ToDictionary(v => v, v => int.MaxValue);
+        var source = Graph.Vertices.FirstOrDefault(v => v.Name == sourceName);
+
+        if (source is null) throw new Exception("Такой вершины не существует");
+
+        var distances = Graph.Vertices.ToDictionary(v => v, v => int.MaxValue);
         var previous = new Dictionary<Vertex, Vertex>();
-        var notVisited = new HashSet<Vertex>(graph.Vertices);
+        var notVisited = new HashSet<Vertex>(Graph.Vertices);
 
         distances[source] = 0;
 
         while (notVisited.Any())
         {
-            var nearestVertex = notVisited.OrderBy(v => distances[v]).FirstOrDefault();
+            var nearestVertex = notVisited.OrderBy(v => distances[v]).First();
             notVisited.Remove(nearestVertex);
 
             foreach (var edge in nearestVertex.Edges)
