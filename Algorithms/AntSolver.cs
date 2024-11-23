@@ -18,14 +18,9 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
         var cur_move = 0;
         var ret = new AntPath(int.MaxValue, [], []);
 
-        while (cur_move != moves_without_change)
+        while (cur_move++ != moves_without_change)
         {
-            foreach (var node in Graph.Vertices)
-            {
-                Colony.Add(new Ant(node));
-            }
-
-            cur_move++;
+            Colony.AddRange(Graph.Vertices.Select(x => new Ant(x)));
 
             foreach (var ant in Colony)
             {

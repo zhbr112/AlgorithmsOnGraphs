@@ -83,5 +83,5 @@ void AntSolverTest()
     }
 }
 
-DijkstraTest();
+//DijkstraTest();
 AntSolverTest();

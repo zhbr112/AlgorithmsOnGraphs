@@ -4,11 +4,11 @@ namespace AlgorithmsOnGraphs.Algorithms;
 
 public class Ant(Vertex start)
 {
-    private Vertex Start = start;
+    private readonly Vertex Start = start;
     private List<Vertex> Visited = [];
     private List<Edge> Edges = [];
     private int WayWeight = 0;
-    private Random Random = new Random();
+    private readonly Random Random = new ();
     public bool IsMoving = true;
 
     public void ChooseVertex(Dictionary<Edge, double> pheromones, double alpha, double beta)
@@ -18,23 +18,23 @@ public class Ant(Vertex start)
             Visited.Add(Start);
         }
 
-        var all_edges = Visited.Last().Edges;
-        var edges = all_edges;
+        var all_edges = Visited[^1].Edges;
+        
+        var NoVis = Visited.SelectMany(v => all_edges.Where(e => e.To.Name != v.Name));
+        var edges = NoVis.Where(e => NoVis.Count(ed => ed == e) == Visited.Count).Distinct().ToList();
 
-        foreach (var vertex in Visited)
-        {
-            edges = edges.Where(x => x.To.Name != vertex.Name).ToList();
-        }
 
         if (edges.Count == 0)
         {
             IsMoving = false;
             var way_to_start = all_edges.FirstOrDefault(x => x.To.Name == Start.Name);
+
             if (way_to_start is not null)
             {
                 WayWeight += way_to_start.Weight;
                 Visited.Add(way_to_start.To);
             }
+
             return;
         }
 
@@ -50,6 +50,7 @@ public class Ant(Vertex start)
             {
                 pher = pheromones[edge];
             }
+            
             var p = Math.Pow(pher, alpha) * Math.Pow(edge.Weight, beta);
             possibility.Add(p);
             all_possibility += p;
@@ -80,7 +81,7 @@ public class Ant(Vertex start)
         Visited.Add(select_edge.To);
     }
 
-    public AntPath GetPath() => new AntPath(WayWeight, Visited, Edges);
+    public AntPath GetPath() => new (WayWeight, Visited, Edges);
 }
 
 public record AntPath(int Weight, List<Vertex> Vertices, List<Edge> Edges);
