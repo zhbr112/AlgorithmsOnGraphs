@@ -20,9 +20,8 @@ public class Ant(Vertex start)
 
         var all_edges = Visited[^1].Edges;
         
-        var NoVis = Visited.SelectMany(v => all_edges.Where(e => e.To.Name != v.Name));
-        var edges = NoVis.Where(e => NoVis.Count(ed => ed == e) == Visited.Count).Distinct().ToList();
-
+        var edges = all_edges.Where(e => Visited.SelectMany(v => all_edges.Where(e => e.To.Name != v.Name)).Count(ed => ed == e) == Visited.Count)
+            .ToList();
 
         if (edges.Count == 0)
         {
