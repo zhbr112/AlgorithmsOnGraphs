@@ -50,7 +50,7 @@ public class Ant(Vertex start)
                 pher = pheromones[edge];
             }
             
-            var p = Math.Pow(pher, alpha) * Math.Pow(edge.Weight, beta);
+            var p = Math.Pow(pher, alpha) * Math.Pow(1.0 / edge.Weight, beta);
             possibility.Add(p);
             all_possibility += p;
         }
@@ -66,11 +66,11 @@ public class Ant(Vertex start)
 
         double rand_value = Random.NextDouble();
 
-        int selected_index = possibility.Count - 1;
+        int selected_index = 0;
 
         while (rand_value > possibility[selected_index])
         {
-            selected_index--;
+            selected_index++;
         }
 
         var select_edge = edges[selected_index];

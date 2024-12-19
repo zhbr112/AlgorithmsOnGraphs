@@ -83,5 +83,31 @@ void AntSolverTest()
     }
 }
 
+void AntSolverFromFile()
+{
+    var gr_tst = new Graph();
+
+    StreamReader reader = File.OpenText("1000.txt");
+    var line = reader.ReadLine();
+    line = reader.ReadLine();
+    while (line != null)
+    {
+        var data = line.Split('\t');
+        gr_tst.AddEdge(int.Parse(data[0]).ToString(), int.Parse(data[1]).ToString(), int.Parse(data[2]));
+        line = reader.ReadLine();
+    }
+    var solver = new AntSolver(gr_tst);
+
+    var path = solver.Algorithm();
+
+    Console.WriteLine($"answer: {path.Weight}");
+
+    foreach (var Vertex in path.Vertices)
+    {
+        Console.WriteLine(Vertex.Name);
+    }
+}
+
 //DijkstraTest();
 AntSolverTest();
+//AntSolverFromFile();
