@@ -2,8 +2,10 @@ using AlgorithmsOnGraphs.GraghClasses;
 
 namespace AlgorithmsOnGraphs.Algorithms;
 
-public class Ant(Vertex start)
+public class Ant(Vertex start, double _alpha = 1.0, double _beta = 1.0)
 {
+    private double alpha = _alpha;
+    private double beta = _beta;
     private readonly Vertex Start = start;
     private List<Vertex> Visited = [];
     private List<Edge> Edges = [];
@@ -11,7 +13,7 @@ public class Ant(Vertex start)
     private readonly Random Random = new ();
     public bool IsMoving = true;
 
-    public void ChooseVertex(Dictionary<Edge, double> pheromones, double alpha, double beta)
+    public void ChooseVertex(Dictionary<Edge, double> pheromones)
     {
         if (Visited.Count == 0)
         {
@@ -19,9 +21,17 @@ public class Ant(Vertex start)
         }
 
         var all_edges = Visited[^1].Edges;
-        
-        var edges = all_edges.Where(e => Visited.SelectMany(v => all_edges.Where(e => e.To.Name != v.Name)).Count(ed => ed == e) == Visited.Count)
-            .ToList();
+        var edges = all_edges;
+
+        foreach (var Node in Visited)
+        {
+            edges = edges.Where(x => Node.Name != x.To.Name).ToList();
+        }
+        for (int i = 0; i < edges.Count; i++)
+        {
+            if (edges[i].Weight ==0)
+                edges.Remove(edges[i]);
+        }
 
         if (edges.Count == 0)
         {
@@ -43,6 +53,7 @@ public class Ant(Vertex start)
 
         foreach (var edge in edges)
         {
+            
             double pher = 0.00001;
 
             if (pheromones.ContainsKey(edge))

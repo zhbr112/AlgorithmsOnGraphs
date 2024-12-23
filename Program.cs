@@ -1,5 +1,6 @@
 ﻿using AlgorithmsOnGraphs.GraghClasses;
 using AlgorithmsOnGraphs.Algorithms;
+using System.Text.Json;
 
 static void DijkstraTest()
 {
@@ -86,16 +87,20 @@ void AntSolverTest()
 void AntSolverFromFile()
 {
     var gr_tst = new Graph();
-
-    StreamReader reader = File.OpenText("1000.txt");
-    var line = reader.ReadLine();
-    line = reader.ReadLine();
-    while (line != null)
+    int[][] items;
+    using (StreamReader r = new StreamReader("graph100.json"))
     {
-        var data = line.Split('\t');
-        gr_tst.AddEdge(int.Parse(data[0]).ToString(), int.Parse(data[1]).ToString(), int.Parse(data[2]));
-        line = reader.ReadLine();
+        string json = r.ReadToEnd();
+        items = JsonSerializer.Deserialize<int[][]>(json);
     }
+    for(int i = 0; i < items.Length; i++)
+    {
+        for(int j = 0; j < items[i].Length; j++)
+        {
+            gr_tst.AddEdge(i.ToString(), j.ToString(), items[i][j]);
+        }
+    }
+
     var solver = new AntSolver(gr_tst);
 
     var path = solver.Algorithm();
@@ -106,8 +111,9 @@ void AntSolverFromFile()
     {
         Console.WriteLine(Vertex.Name);
     }
+    
 }
 
 //DijkstraTest();
-AntSolverTest();
-//AntSolverFromFile();
+//AntSolverTest();
+AntSolverFromFile();

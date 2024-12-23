@@ -1,4 +1,5 @@
 using AlgorithmsOnGraphs.GraghClasses;
+using System.Text;
 
 namespace AlgorithmsOnGraphs.Algorithms;
 
@@ -11,9 +12,14 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
     private List<Ant> Colony = [];
     private Dictionary<Edge, double> Pheromones = [];
 
+    void AddColony()
+    {
+
+    }
     public AntPath Algorithm()
     {
-        var moves_without_change = 1000;
+        var w=new StringBuilder();
+        var moves_without_change = 20;
         var vertices_count = Graph.Vertices.Count + 1;
         var cur_move = 0;
         var ret = new AntPath(int.MaxValue, [], []);
@@ -38,7 +44,7 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
             {
                 while (ant.IsMoving)
                 {
-                    ant.ChooseVertex(Pheromones, Alpha, Beta);
+                    ant.ChooseVertex(Pheromones);
                 }
 
                 var path = ant.GetPath();
@@ -46,6 +52,7 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
                 if (path.Vertices.Count == vertices_count)
                 {
                     Console.WriteLine($"{cur_move} {path.Weight}");
+                    w.Append(path.Weight.ToString()+"\n");
                     if (path.Weight < ret.Weight)
                     {
                         ret = path;
@@ -55,7 +62,7 @@ public class AntSolver(Graph graph, double alpha = 1.0, double beta = 1.0, doubl
             }
             UpdatePheromones();
         }
-        
+        File.AppendAllText("q.txt",w.ToString());
         return ret;
     }
 
